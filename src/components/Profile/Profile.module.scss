@@ -1,0 +1,47 @@
+.textColor {
+    color: rgb(233, 233, 233);
+}
+
+.profile {
+    &_container {
+        width: 100%;
+        min-width: 280px;
+        background-color: rgb(20, 17, 48);
+        padding: 24px;
+        border-radius: 4px;
+        margin-bottom: 24px;
+    }
+
+    &_cardtitle {
+        text-align: center;
+        margin-bottom: 24px;
+        letter-spacing: 1px;
+        @extend .textColor;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: rgb(46, 133, 233);
+            margin: 8px auto 0;
+        }
+    }
+
+    &_image {
+        display: block;
+        border-radius: 4px;
+        margin: 0 auto 12px;
+    }
+
+    &_title {
+        @extend .textColor;
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    &_text {
+        @extend .textColor;
+        margin-bottom: 12px;
+    }
+}

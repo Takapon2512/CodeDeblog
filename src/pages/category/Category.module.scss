@@ -1,0 +1,119 @@
+.textColor {
+    color: rgb(233, 233, 233);
+}
+.posticonColor {
+    color: rgb(233, 233, 233);
+}
+
+.category {
+    &_container {
+        display: flex;
+        width: 90%;
+        max-width: 1024px;
+        min-height: 100vh;
+        margin: auto;
+    }
+
+    &_main {
+        margin-right: 24px;
+        min-width: 70%;
+    }
+
+    &_title {
+        position: relative;
+        width: 40%;
+        margin: 0 auto 32px;
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 16px 0;
+        @extend .textColor;
+
+        &::after {
+            position: absolute;
+            bottom: 8px;
+            left: calc(50% - 10%);
+            display: block;
+            content: '';
+            width: 20%;
+            height: 2px;
+            background-color: rgb(46, 133, 233);
+        }
+    }
+}
+
+.sidebar {
+    width: 40%;
+}
+
+.tag {
+    &_wrapper {
+        display: flex;
+    }
+    
+    &_item {
+        width: auto;
+        margin-right: 8px;
+        padding: 0;
+        @extend .textColor;
+    }
+
+    &_icon {
+        font-size: 1rem;
+        margin-right: 4px;
+        @extend .textColor;
+    }
+}
+
+.card {
+    &_title {
+        font-weight: 600;
+        @extend .textColor;
+    }
+}
+
+.posttime {
+    display: flex;
+    align-items: center;
+    @extend .textColor;
+
+    &_icon {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-right: 4px;
+        @extend .posticonColor
+    }
+}
+.blog {
+    &_cardlist {
+        display: flex;
+        padding: 0;
+        min-width: calc(70% + 24px);
+    }
+
+    &_cardlistItem {
+        width: calc(50% - 24px);
+        height: 330px;
+        padding: 0;
+        margin-right: 16px;
+    }
+
+    &_link{
+        height: 100%;
+    }
+
+    &_card {
+        margin: 0;
+        padding: 8px;
+        background-color: rgb(20, 17, 48);
+        transition: all 0.2s;
+        height: 100%;
+
+        &:hover {
+            background-color: rgb(37, 31, 88);
+            scale: 1.025;
+        }
+    }
+}
+.sidebar {
+    width: 40%;
+}

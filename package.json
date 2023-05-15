@@ -9,14 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.12.3",
+    "@types/cheerio": "^0.22.31",
+    "@types/highlightjs": "^9.12.2",
     "@types/node": "20.1.0",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
+    "cheerio": "^1.0.0-rc.12",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.1",
+    "highlight.js": "^11.8.0",
+    "microcms-js-sdk": "^2.3.3",
     "next": "13.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "recoil": "^0.7.7",
+    "sass": "^1.62.1",
     "typescript": "5.0.4"
   }
 }

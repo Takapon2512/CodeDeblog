@@ -1,0 +1,93 @@
+.textColor {
+    color: rgb(233, 233, 233);
+}
+
+.posticonColor {
+    color: rgb(233, 233, 233);
+}
+
+.home {
+    &_container {
+        display: flex;
+        width: 90%;
+        max-width: 1024px;
+        min-height: 100vh;
+        margin: auto;
+    }
+}
+
+.sidebar {
+    width: 40%;
+}
+
+.tag {
+    &_wrapper {
+        display: flex;
+    }
+    
+    &_item {
+        width: auto;
+        margin-right: 8px;
+        padding: 0;
+        @extend .textColor;
+    }
+
+    &_icon {
+        font-size: 1rem;
+        margin-right: 4px;
+        @extend .textColor;
+    }
+}
+
+.card {
+    &_title {
+        font-weight: 600;
+        @extend .textColor;
+    }
+}
+
+.posttime {
+    display: flex;
+    align-items: center;
+    @extend .textColor;
+
+    &_icon {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-right: 4px;
+        @extend .posticonColor
+    }
+}
+.blog {
+    &_cardlist {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        padding: 0;
+    }
+
+    &_cardlistItem {
+        width: calc(50% - 24px);
+        height: 330px;
+        padding: 0;
+        margin-right: 16px;
+        margin-bottom: 16px;
+    }
+
+    &_link{
+        height: 100%;
+    }
+
+    &_card {
+        margin: 0;
+        padding: 8px;
+        background-color: rgb(20, 17, 48);
+        transition: all 0.2s;
+        height: 100%;
+
+        &:hover {
+            background-color: rgb(37, 31, 88);
+            scale: 1.025;
+        }
+    }
+}
