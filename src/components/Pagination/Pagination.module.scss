@@ -1,0 +1,26 @@
+.textColor {
+    color: rgb(233, 233, 233);
+}
+
+.pagination {
+
+    &_container {
+        display: flex;
+        justify-content: center;
+    }
+
+    &_num {
+        @extend .textColor;
+        width: 40px;
+        height: 40px;
+        background-color: rgb(21, 60, 97);
+        margin-left: 12px;
+        border-radius: 4px;
+        transition: all 0.2s;
+        
+        &:hover {
+            cursor: pointer; 
+            background-color: rgb(52, 102, 148);
+        }
+    }
+}

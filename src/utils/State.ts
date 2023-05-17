@@ -31,3 +31,8 @@ export const CategoryIdState = atom({
     key: 'CategoryId',
     default: ''
 })
+
+export const PageNumState = atom({
+    key: 'PageNumSate',
+    default: 1
+})

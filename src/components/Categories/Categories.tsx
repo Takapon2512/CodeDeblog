@@ -21,6 +21,8 @@ import {
 //CSS
 import styles from './Categories.module.scss'
 
+
+
 export const Categories = ({ categories }: { categories: Category[] }) => {
     const setCategory = useSetRecoilState(CategoryState)
     const onClickCategory = (category: Category) => setCategory(category)

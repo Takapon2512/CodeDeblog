@@ -10,7 +10,7 @@
         display: flex;
         width: 90%;
         max-width: 1024px;
-        min-height: 100vh;
+        min-height: 87vh;
         margin: auto;
     }
 
@@ -92,8 +92,8 @@
 
     &_cardlistItem {
         width: calc(50% - 24px);
-        height: 330px;
         padding: 0;
+        height: 330px;
         margin-right: 16px;
     }
 
@@ -112,8 +112,10 @@
             background-color: rgb(37, 31, 88);
             scale: 1.025;
         }
+
+        & img {
+            height: 180px;
+            margin-bottom: 12px;
+        }
     }
-}
-.sidebar {
-    width: 40%;
 }

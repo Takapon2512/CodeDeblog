@@ -42,6 +42,7 @@ import { Header } from '@/components/Header/Header'
 import { Footer } from '@/components/Footer/Footer'
 import { Profile } from '@/components/Profile/Profile'
 import { Categories } from '@/components/Categories/Categories'
+import { Tags } from '@/components/Tags/tags'
 
 //MUIIcon
 import SellIcon from '@mui/icons-material/Sell';
@@ -143,6 +144,7 @@ const TagId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             <Box className={styles.sidebar}>
                 <Profile />
                 <Categories categories={categories} />
+                <Tags tags={tags} />
             </Box>
         </Box>
         <Footer />

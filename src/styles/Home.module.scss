@@ -7,12 +7,17 @@
 }
 
 .home {
-    &_container {
+    &_row {
         display: flex;
         width: 90%;
         max-width: 1024px;
-        min-height: 100vh;
+        min-height: 87vh;
         margin: auto;
+    }
+
+    &_container {
+        min-width: 70%;
+        margin-right: 24px;
     }
 }
 
@@ -68,7 +73,6 @@
 
     &_cardlistItem {
         width: calc(50% - 24px);
-        height: 330px;
         padding: 0;
         margin-right: 16px;
         margin-bottom: 16px;
@@ -84,6 +88,11 @@
         background-color: rgb(20, 17, 48);
         transition: all 0.2s;
         height: 100%;
+
+        & img {
+            height: 180px;
+            margin-bottom: 12px;
+        }
 
         &:hover {
             background-color: rgb(37, 31, 88);

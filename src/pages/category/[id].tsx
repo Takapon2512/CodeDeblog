@@ -42,6 +42,7 @@ import { Header } from '@/components/Header/Header'
 import { Footer } from '@/components/Footer/Footer'
 import { Profile } from '@/components/Profile/Profile'
 import { Categories } from '@/components/Categories/Categories'
+import { Tags } from '@/components/Tags/tags'
 
 //MUIIcon
 import SellIcon from '@mui/icons-material/Sell';
@@ -60,22 +61,25 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const categoriesData = await client.get({ endpoint: 'category' })
   const blogData = await client.get({ endpoint: 'blog' })
+  const tagsData = await client.get({ endpoint: 'tag' })
 
   return {
     props: {
       blogs: blogData.contents,
-      categories: categoriesData.contents
+      categories: categoriesData.contents,
+      tags: tagsData.contents
     }
   }
 }
 
 type Props = {
   blogs: Blog[],
-  categories: Category[]
+  categories: Category[],
+  tags: Tag[]
 }
 
 const CategoryId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
-  blogs, categories
+  blogs, categories, tags
 }: Props) => {
   //カテゴリー情報を受け取る
   const getCategory = useRecoilValue(CategoryState) 
@@ -138,6 +142,7 @@ const CategoryId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <Box className={styles.sidebar}>
           <Profile />
           <Categories categories={categories} />
+          <Tags tags={tags} />
         </Box>
       </Box>
     <Footer />

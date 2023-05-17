@@ -26,6 +26,7 @@ import { Author } from '@/components/Author/Author';
 import { Footer } from '@/components/Footer/Footer';
 import { Profile } from '@/components/Profile/Profile';
 import { Categories } from '@/components/Categories/Categories';
+import { Tags } from '@/components/Tags/tags';
 
 //Mui
 import { 
@@ -43,6 +44,9 @@ import FolderIcon from '@mui/icons-material/Folder';
 //CSS
 import styles from './article.module.scss'
 import 'highlight.js/styles/hybrid.css';
+
+//ページ上限
+const perPage = 6
 
 //APIリクエストを行うパスを指定
 export const getStaticPaths: GetStaticPaths<Params> =  async () => {
@@ -159,6 +163,7 @@ const BlogId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             <Box className={styles.sidebar}>
                 <Profile />
                 <Categories categories={categories} />
+                <Tags tags={tags} />
             </Box>
         </Box>
         <Footer />
