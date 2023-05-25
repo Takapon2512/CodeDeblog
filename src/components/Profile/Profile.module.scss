@@ -5,11 +5,15 @@
 .profile {
     &_container {
         width: 100%;
-        min-width: 280px;
         background-color: rgb(20, 17, 48);
         padding: 24px;
         border-radius: 4px;
         margin-bottom: 24px;
+
+        @media screen and (max-width: 600px) {
+            padding: 16px;
+            margin-bottom: 16px;
+        }
     }
 
     &_cardtitle {
@@ -17,6 +21,11 @@
         margin-bottom: 24px;
         letter-spacing: 1px;
         @extend .textColor;
+
+        @media screen and (max-width: 600px) {
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
 
         &::after {
             content: '';
@@ -32,16 +41,31 @@
         display: block;
         border-radius: 4px;
         margin: 0 auto 12px;
+
+        @media screen and (max-width: 600px) {
+            margin-bottom: 8px;
+        }
     }
 
     &_title {
         @extend .textColor;
         text-align: center;
         margin-bottom: 24px;
+        
+        @media screen and (max-width: 600px) {
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
     }
 
     &_text {
         @extend .textColor;
         margin-bottom: 12px;
+        font-size: 14px;
+        
+        @media screen and (max-width: 600px) {
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
     }
 }

@@ -32,7 +32,12 @@ export const CategoryIdState = atom({
     default: ''
 })
 
-export const PageNumState = atom({
-    key: 'PageNumSate',
+export const PageNumState = atom<number>({
+    key: 'PageNumState',
+    default: 1
+})
+
+export const prevPageNumState = atom<number>({
+    key: 'prevPageNumState',
     default: 1
 })

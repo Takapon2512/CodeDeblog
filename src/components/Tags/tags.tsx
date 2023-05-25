@@ -19,7 +19,7 @@ import {
 } from '@mui/material'
 
 //CSS
-import styles from './Tags.module.scss'
+import styles from './tags.module.scss'
 
 export const Tags = ({ tags }: { tags: Tag[] }) => {
     const setTag = useSetRecoilState(TagState)

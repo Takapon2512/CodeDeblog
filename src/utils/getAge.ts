@@ -11,7 +11,7 @@ export const getAge = (birthday: birthdayType) => {
     let age = today.getFullYear() - birthday.year
 
     //今年の誕生日が来ていない場合は年齢から1を引く
-    if (today < thisYearBirthday) age = age - 1
+    if (today < thisYearBirthday) age--
 
     return age
 }

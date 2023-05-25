@@ -7,14 +7,8 @@ import { Box ,List, ListItem } from '@mui/material'
 import styles from './Header.module.scss'
 
 //recoil
-import { 
-  CategoryIdState,
-  CategoryState 
-} from '@/utils/State'
-import {
-  useSetRecoilState,
-  useRecoilValue
-} from 'recoil'
+import { CategoryState } from '@/utils/State'
+import { useSetRecoilState } from 'recoil'
 
 export const Header = ({ categories }: { categories: Category[] }) => {
   const setCategory = useSetRecoilState(CategoryState)
@@ -28,11 +22,11 @@ export const Header = ({ categories }: { categories: Category[] }) => {
     </Head>
     <header className={styles.header}>
       <Box className={styles.header_container}>
-        <div className={styles.blog_title}>
+        <Box className={styles.blog_title}>
           <Link href={'/'}>
             Code Deblog
           </Link>
-        </div>
+        </Box>
         <List className={styles.blog_categories}>
           {
             categories.map((category: Category, index: number) => (

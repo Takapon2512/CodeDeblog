@@ -4,6 +4,14 @@
     margin: 0 auto 24px;
     max-width: 1024px;
     width: 90%;
+
+    @media screen and (max-width: 600px) {
+        margin-bottom: 12px;   
+    }
+
+    @media screen and (min-width: 601px) and (max-width: 960px) {
+        margin-bottom: 16px;
+    }
     
     &_container {
         display: flex;
@@ -17,11 +25,27 @@
     &_title {
         font-size: 1.5rem;
         font-weight: 600;
+
+        @media screen and (max-width: 600px) {
+            font-size: 1rem;
+        }
+
+        @media screen and (min-width: 601px) and (max-width: 960px) {
+            font-size: 1.4rem;   
+        }    
     }
 
     &_categories {
         display: flex;
         padding: 0;
+
+        @media screen and (max-width: 600px) {
+            display: none;
+        }
+
+        @media screen and (min-width: 601px) and (max-width: 960px) {
+            display: none;
+        }
     }
 
     &_category {

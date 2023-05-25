@@ -34,7 +34,7 @@ import {
 } from '@/types/blogType'
 
 import { client } from '../../../libs/client'
-import { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
+// import { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
 import { getDateStr } from '@/utils/getDateStr'
 
 //Component
@@ -43,13 +43,14 @@ import { Footer } from '@/components/Footer/Footer'
 import { Profile } from '@/components/Profile/Profile'
 import { Categories } from '@/components/Categories/Categories'
 import { Tags } from '@/components/Tags/tags'
+import { Pagination } from '@/components/Pagination/Pagination'
 
 //MUIIcon
 import SellIcon from '@mui/icons-material/Sell';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
     const data = await client.get({ endpoint: 'tag' })
     const paths = data.contents.map((content: Tag) => `/tag/${content.id}`)
   
@@ -73,6 +74,10 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     }
 }
 
+type Params = {
+  id: string
+}
+
 type Props = {
     blogs: Blog[],
     tags: Tag[],
@@ -89,6 +94,7 @@ const TagId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
     //記事が持っているタグと一致しているものを抽出
     const prevBlogs = [...blogs]
     const filterBlogs = prevBlogs.filter(blog => blog.tags.map(tag => tag.tag).includes(getTag.tag))
+    const filterBlogsCount = filterBlogs.length
 
     return (
         <>
@@ -99,47 +105,50 @@ const TagId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                     {`# ${getTag.tag}`}
                 </Box>
                 <List className={styles.blog_cardlist}>
-            {
-              filterBlogs.map((blog: Blog, index: number) => (
-                <ListItem key={index} className={styles.blog_cardlistItem}>
-                  <Link href={`../blog/${blog.id}`} className={styles.blog_link}>
-                    <Card className={styles.blog_card}>
-                      {
-                        blog.images ? (
-                          <CardMedia 
-                          component={'img'}
-                          width='100%'
-                          height='auto'
-                          src={`../image/${blog.images}`}
-                          alt={blog.images}
-                          sx={{ 
-                            border: 'solid 0.5px #ccc',
-                            borderRadius: '2px'
-                          }}
-                          />
-                        ) : (<></>)
-                      }
-                      <Typography variant='h6' className={styles.card_title}>
-                        {blog.title}
-                      </Typography>
-                      <List className={styles.tag_wrapper}>
-                        <SellIcon className={styles.tag_icon} />
-                        {
-                          blog.tags.map((tag: Tag, index: number) => (
-                            <ListItem key={index} className={styles.tag_item}>{`#${tag.tag}`}</ListItem>
-                          ))
-                        }
-                      </List>
-                      <Typography className={styles.posttime}>
-                        <AccessTimeIcon className={styles.posttime_icon} />
-                        { getDateStr(blog.publishedAt) }
-                      </Typography>
-                    </Card>
-                  </Link>
-                </ListItem>
-              ))
-            }
-          </List>
+                  {
+                    filterBlogs.map((blog: Blog, index: number) => (
+                      <ListItem key={index} className={styles.blog_cardlistItem}>
+                        <Link href={`../blog/${blog.id}`} className={styles.blog_link}>
+                          <Card className={styles.blog_card}>
+                            {
+                              blog.images ? (
+                                <CardMedia 
+                                component={'img'}
+                                width='100%'
+                                height='auto'
+                                src={`../image/${blog.images}`}
+                                alt={blog.images}
+                                sx={{ 
+                                  border: 'solid 0.5px #ccc',
+                                  borderRadius: '2px'
+                                }}
+                                />
+                              ) : (<></>)
+                            }
+                            <Box className={styles.cardlistItem_right}>
+                              <Typography variant='h6' className={styles.card_title}>
+                                {blog.title}
+                              </Typography>
+                              <List className={styles.tag_wrapper}>
+                                <SellIcon className={styles.tag_icon} />
+                                {
+                                  blog.tags.map((tag: Tag, index: number) => (
+                                    <ListItem key={index} className={styles.tag_item}>{`#${tag.tag}`}</ListItem>
+                                  ))
+                                }
+                              </List>
+                              <Typography className={styles.posttime}>
+                                <AccessTimeIcon className={styles.posttime_icon} />
+                                { getDateStr(blog.publishedAt) }
+                              </Typography>
+                            </Box>
+                          </Card>
+                        </Link>
+                      </ListItem>
+                    ))
+                  }
+                </List>
+              <Pagination totalCount={filterBlogsCount} />
             </Box>
             <Box className={styles.sidebar}>
                 <Profile />

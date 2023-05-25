@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import type { InferGetStaticPropsType, NextPage } from 'next'
 import { client } from '../../libs/client'
 
 //Recoil関係
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import { PageNumState } from '@/utils/State'
 
 import { Blog, Tag, Category } from '@/types/blogType'
@@ -62,7 +62,8 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   
   const allBlogs = [...blogs]
   const displayBlogs = allBlogs.filter((blog, index) => (
-    index >= contentsNum * (currentPageNum - 1) && contentsNum * currentPageNum > index 
+    index >= contentsNum * (currentPageNum - 1) 
+    && contentsNum * currentPageNum > index 
   ))
 
   return (
@@ -90,21 +91,23 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                       />
                       ) : (<></>)
                     }
-                    <Typography variant='h6' className={styles.card_title}>
-                      {blog.title}
-                    </Typography>
-                    <List className={styles.tag_wrapper}>
-                      <SellIcon className={styles.tag_icon} />
-                      {
-                        blog.tags.map((tag: Tag, index: number) => (
-                          <ListItem key={index} className={styles.tag_item}>{`#${tag.tag}`}</ListItem>
-                        ))
-                      }
-                    </List>
-                    <Typography className={styles.posttime}>
-                      <AccessTimeIcon className={styles.posttime_icon} />
-                      { getDateStr(blog.publishedAt) }
-                    </Typography>
+                    <Box className={styles.cardlistItem_right}>
+                      <Typography variant='h6' className={styles.card_title}>
+                        {blog.title}
+                      </Typography>
+                      <List className={styles.tag_wrapper}>
+                        <SellIcon className={styles.tag_icon} />
+                        {
+                          blog.tags.map((tag: Tag, index: number) => (
+                            <ListItem key={index} className={styles.tag_item}>{`#${tag.tag}`}</ListItem>
+                          ))
+                        }
+                      </List>
+                      <Typography className={styles.posttime}>
+                        <AccessTimeIcon className={styles.posttime_icon} />
+                        { getDateStr(blog.publishedAt) }
+                      </Typography>
+                    </Box>
                   </Card>
                 </Link>
               </ListItem>

@@ -8,6 +8,11 @@
         background-color: rgb(20, 17, 48);
         padding: 24px;
         border-radius: 4px;
+
+        @media screen and (max-width: 600px) {
+            padding: 16px;
+            margin-bottom: 16px;
+        }
     }
 
     &_cardtitle {
@@ -15,6 +20,11 @@
         margin-bottom: 24px;
         letter-spacing: 1px;
         @extend .textColor;
+
+        @media screen and (max-width: 600px) {
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
 
         &::after {
             content: '';
@@ -37,6 +47,11 @@
         margin-bottom: 12px;
         transition: all 0.2s;
         @extend .textColor;
+
+        @media screen and (max-width: 600px) {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
 
         &:last-child {
             margin-bottom: 0;

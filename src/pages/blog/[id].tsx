@@ -8,7 +8,7 @@ import {
 import Link from 'next/link';
 import { client } from "../../../libs/client";
 import type { Blog, Category, Tag } from "@/types/blogType";
-import { Params } from 'next/dist/shared/lib/router/utils/route-matcher'; 
+// import { Params } from 'next/dist/shared/lib/router/utils/route-matcher'; 
 import Image from 'next/image';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js';
@@ -49,7 +49,7 @@ import 'highlight.js/styles/hybrid.css';
 const perPage = 6
 
 //APIリクエストを行うパスを指定
-export const getStaticPaths: GetStaticPaths<Params> =  async () => {
+export const getStaticPaths: GetStaticPaths =  async () => {
     const data = await client.get({ endpoint: 'blog' })
     const paths = data.contents.map((content: Blog) => `/blog/${content.id}`)
 
@@ -79,6 +79,10 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
             highlightedBody: $.html()
         }
     }
+}
+
+type Params = {
+    id: string
 }
 
 //Propsの型

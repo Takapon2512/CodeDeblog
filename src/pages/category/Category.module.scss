@@ -11,12 +11,22 @@
         width: 90%;
         max-width: 1024px;
         min-height: 87vh;
-        margin: auto;
+        margin: 0 auto 32px;
+
+        @media screen and (max-width: 960px) {
+            display: block;
+            width: 90%;
+            margin: 0 auto;
+        }
     }
 
     &_main {
         margin-right: 24px;
-        min-width: 70%;
+        width: 100%;
+
+        @media screen and (max-width: 600px) {
+            margin-right: 0;
+        }
     }
 
     &_title {
@@ -38,11 +48,20 @@
             height: 2px;
             background-color: rgb(46, 133, 233);
         }
+
+        @media screen and (max-width: 600px) {
+            font-size: 18px;
+        }
     }
 }
 
 .sidebar {
-    width: 40%;
+    width: 30%;
+
+    @media screen and (max-width: 960px) {
+        width: 100%;
+        margin-bottom: 24px;
+    }
 }
 
 .tag {
@@ -64,10 +83,29 @@
     }
 }
 
+@media screen and (max-width: 600px) {
+    .tag_wrapper {
+        font-size: 12px;
+        padding: 0;
+    }
+
+    .tag_icon {
+        font-size: 12px;
+    }
+}
+
 .card {
     &_title {
         font-weight: 600;
         @extend .textColor;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card_title {
+        font-size: 14px;
+        margin-bottom: 12px;
+        line-height: 1.4;
     }
 }
 
@@ -80,21 +118,61 @@
         font-size: 1.2rem;
         font-weight: 600;
         margin-right: 4px;
-        @extend .posticonColor
+        @extend .posticonColor;
     }
 }
+
+@media screen and (max-width: 600px) {
+    .posttime {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+    .posttime_icon {
+        font-size: 12px;
+    }
+}
+
 .blog {
     &_cardlist {
         display: flex;
         padding: 0;
         min-width: calc(70% + 24px);
+        margin-bottom: 24px;
+
+        @media screen and (max-width: 600px) {
+            display: block;
+            width: 100%;
+            padding: 0 4px;
+            margin-bottom: 16px;
+        }
+
+        @media screen and (min-width: 601px) and (max-width: 960px) {
+            margin-bottom: 8px;
+        }
+
     }
 
     &_cardlistItem {
-        width: calc(50% - 24px);
+        width: calc(50% - 8px);
         padding: 0;
-        height: 330px;
         margin-right: 16px;
+        margin-bottom: 16px;
+
+        &:nth-child(2n) {
+            margin-right: 0;
+        }
+
+        @media screen and (max-width: 600px) {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 8px;
+        }
+
+        @media screen and (min-width: 601px) and (max-width: 960px) {
+            width: calc(50% - 8px);
+        }
+
     }
 
     &_link{
@@ -108,6 +186,11 @@
         transition: all 0.2s;
         height: 100%;
 
+        @media screen and (max-width: 600px) {
+            display: flex;
+            align-items: center;
+        }
+
         &:hover {
             background-color: rgb(37, 31, 88);
             scale: 1.025;
@@ -118,4 +201,24 @@
             margin-bottom: 12px;
         }
     }
+}
+
+@media screen and (max-width: 600px) {
+    .blog {
+        &_card img {
+            width: 104px;
+            height: 72px;
+            margin-bottom: 0;
+            margin-right: 8px;
+        }
+
+    }       
+}
+
+@media screen and (min-width: 800px) and (max-width: 960px) {
+    .blog {
+        &_card img {
+            height: 204px;
+        }
+    }  
 }

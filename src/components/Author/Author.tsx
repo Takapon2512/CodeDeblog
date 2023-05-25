@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { birthdayType } from '@/types/blogType'
 
-//外部関数
+//Utils
 import { getAge } from '@/utils/getAge'
 
 //CSS
