@@ -15,7 +15,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 //CSS
-import styles from './Pagination.module.scss'
+import styles from './pagination.module.scss'
 
 export const Pagination = ({ totalCount }: { totalCount: number }) => {
   const setPageNum = useSetRecoilState(PageNumState)

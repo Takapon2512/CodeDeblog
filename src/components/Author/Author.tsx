@@ -6,7 +6,7 @@ import { birthdayType } from '@/types/blogType'
 import { getAge } from '@/utils/getAge'
 
 //CSS
-import styles from './Author.module.scss'
+import styles from './author.module.scss'
 
 //MUI
 import { 

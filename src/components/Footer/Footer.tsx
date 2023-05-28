@@ -8,7 +8,7 @@ import {
 //Icon
 import ListIcon from '@mui/icons-material/List';
 
-import styles from './Footer.module.scss'
+import styles from './footer.module.scss'
 
 export const Footer = () => {
     const date = new Date()

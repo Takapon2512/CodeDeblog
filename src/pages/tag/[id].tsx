@@ -24,7 +24,7 @@ import {
 import { TagState } from '@/utils/State'
 
   //CSS
-import styles from './Tag.module.scss'
+import styles from './tag.module.scss'
 
 //Type
 import { 
@@ -34,7 +34,7 @@ import {
 } from '@/types/blogType'
 
 import { client } from '../../../libs/client'
-// import { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
+import { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
 import { getDateStr } from '@/utils/getDateStr'
 
 //Component
@@ -50,7 +50,7 @@ import SellIcon from '@mui/icons-material/Sell';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
     const data = await client.get({ endpoint: 'tag' })
     const paths = data.contents.map((content: Tag) => `/tag/${content.id}`)
   
@@ -72,10 +72,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         categories: categoryData.contents
       }
     }
-}
-
-type Params = {
-  id: string
 }
 
 type Props = {

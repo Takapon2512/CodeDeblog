@@ -7,7 +7,7 @@ import {
 } from '@mui/material'
 import Image from 'next/image'
 
-import styles from './Profile.module.scss'
+import styles from './profile.module.scss'
 
 export const Profile = () => {
     //私の誕生日
