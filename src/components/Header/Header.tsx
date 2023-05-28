@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Category } from '@/types/blogType'
 
 import { Box ,List, ListItem } from '@mui/material'
-import styles from './header.module.scss'
+import styles from './Header.module.scss'
 
 //recoil
 import { CategoryState } from '@/utils/State'

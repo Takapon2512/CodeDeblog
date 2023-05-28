@@ -19,7 +19,7 @@ import {
 } from '@mui/material'
 
 //CSS
-import styles from './categories.module.scss'
+import styles from './Categories.module.scss'
 
 
 
