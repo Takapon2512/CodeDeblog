@@ -24,7 +24,7 @@ import {
 import { TagState } from '@/utils/State'
 
   //CSS
-import styles from './tag.module.scss'
+import styles from './Tag.module.scss'
 
 //Type
 import { 
