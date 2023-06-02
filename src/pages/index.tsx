@@ -8,7 +8,7 @@ import { useRecoilValue } from 'recoil'
 import { PageNumState } from '@/utils/State'
 
 import { Blog, Tag, Category } from '@/types/blogType'
-import { getDateStr } from '@/utils/getDateStr'
+// import { getDateStr } from '@/utils/getDateStr'
 
 import styles from '../styles/Home.module.scss'
 
@@ -105,7 +105,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                       </List>
                       <Typography className={styles.posttime}>
                         <AccessTimeIcon className={styles.posttime_icon} />
-                        { getDateStr(blog.publishedAt) }
+                        {/* { getDateStr(blog.publishedAt) } */}
                       </Typography>
                     </Box>
                   </Card>

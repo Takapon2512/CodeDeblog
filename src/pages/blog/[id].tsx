@@ -18,7 +18,7 @@ import { useSetRecoilState } from 'recoil'
 import { CategoryState, TagState } from '@/utils/State';
 
 //外部ファイルの関数
-import { getDateStr } from '@/utils/getDateStr';
+// import { getDateStr } from '@/utils/getDateStr';
 
 //コンポーネント
 import { Header } from '@/components/Header/Header';
@@ -123,7 +123,7 @@ const BlogId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                     <Box className={styles.article_createdAt_wrapper}>
                         <AccessTimeIcon className={styles.article_createdAt_icon} />
                         <Typography className={styles.article_createdAt}>
-                            {getDateStr(blog.publishedAt)}
+                            {/* {getDateStr(blog.publishedAt)} */}
                         </Typography>
                     </Box>
                 </Box>
