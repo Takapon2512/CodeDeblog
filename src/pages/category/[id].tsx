@@ -30,7 +30,7 @@ import {
 } from 'recoil'
 
 //CSS
-import styles from './category.module.scss'
+import styles from './Category.module.scss'
 
 import { Blog, Category } from '@/types/blogType'
 import { client } from '../../../libs/client'
