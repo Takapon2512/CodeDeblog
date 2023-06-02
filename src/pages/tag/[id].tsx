@@ -35,7 +35,7 @@ import {
 
 import { client } from '../../../libs/client'
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
-import { getDateStr } from '@/utils/getDateStr'
+// import { getDateStr } from '@/utils/getDateStr'
 
 //Component
 import { Header } from '@/components/Header/Header'
@@ -135,7 +135,7 @@ const TagId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                               </List>
                               <Typography className={styles.posttime}>
                                 <AccessTimeIcon className={styles.posttime_icon} />
-                                { getDateStr(blog.publishedAt) }
+                                {/* { getDateStr(blog.publishedAt) } */}
                               </Typography>
                             </Box>
                           </Card>
