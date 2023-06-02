@@ -9,7 +9,7 @@ import {
 import { 
   CategoryState 
 } from '@/utils/State'
-import { getDateStr } from '@/utils/getDateStr'
+// import { getDateStr } from '@/utils/getDateStr'
 
 //Type
 import { Tag } from '@/types/blogType'
@@ -132,7 +132,7 @@ const CategoryId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                         </List>
                         <Typography className={styles.posttime}>
                           <AccessTimeIcon className={styles.posttime_icon} />
-                          { getDateStr(blog.publishedAt) }
+                          {/* { getDateStr(blog.publishedAt) } */}
                         </Typography>
                       </Box>
                     </Card>
