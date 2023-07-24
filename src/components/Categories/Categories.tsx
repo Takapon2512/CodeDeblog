@@ -21,11 +21,14 @@ import {
 //CSS
 import styles from './Categories.module.scss'
 
-
-
 export const Categories = ({ categories }: { categories: Category[] }) => {
     const setCategory = useSetRecoilState(CategoryState)
-    const onClickCategory = (category: Category) => setCategory(category)
+    const onClickCategory = (category: Category) => {
+        setCategory(category)
+        
+        const jsonCategory = JSON.stringify(category)
+        localStorage.setItem('category', jsonCategory)
+    }
 
     return (
         <Box className={styles.categories_container}>

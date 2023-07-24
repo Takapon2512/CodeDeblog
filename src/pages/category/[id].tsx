@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { 
   GetStaticProps,
@@ -26,7 +26,7 @@ import {
 
 //recoil
 import {
-  useRecoilValue
+  useRecoilState
 } from 'recoil'
 
 //CSS
@@ -81,13 +81,31 @@ type Props = {
 const CategoryId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   blogs, categories, tags
 }: Props) => {
-  //カテゴリー情報を受け取る
-  const getCategory = useRecoilValue(CategoryState) 
+  //Recoil
+  const [category, setCategory] = useRecoilState(CategoryState)
+  let categoryData: Category = {
+    id: '',
+    category: '',
+    createdAt: '',
+    updatedAt: '',
+    publishedAt: '',
+    revisedAt: ''
+  }
+
+  if (typeof localStorage !== 'undefined') {
+    const jsonGetCategory = localStorage.getItem('category') || ''
+    const getCategory: Category = JSON.parse(jsonGetCategory)
+    categoryData = getCategory
+  }
 
   //カテゴリーに一致した記事のみ抽出する
   const prevBlogs = [...blogs]
-  const filterBlogs = prevBlogs.filter(blog => blog.category.map(cat => cat.id).includes(getCategory.id))
+  const filterBlogs = prevBlogs.filter(blog => blog.category.map(cat => cat.id).includes(category.id))
   const filterBlogsCount = filterBlogs.length
+
+  useEffect(() => {
+    setCategory(categoryData)
+  }, [])
 
   return (
     <>
@@ -95,7 +113,7 @@ const CategoryId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       <Box className={styles.category_container} component={'main'}>
         <Box className={styles.category_main}>
           <Box className={styles.category_title}>
-            {getCategory.category}
+            {category.category}
           </Box>
           <List className={styles.blog_cardlist}>
             {
@@ -109,7 +127,7 @@ const CategoryId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                           component={'img'}
                           width='100%'
                           height='auto'
-                          src={`../image/${blog.images}`}
+                          src={`/image/${blog.images}`}
                           alt={blog.images}
                           sx={{ 
                             border: 'solid 0.5px #ccc',

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { 
     GetStaticProps,
@@ -19,7 +19,7 @@ import {
 
 //recoil
 import {
-    useRecoilValue
+  useRecoilState
 } from 'recoil'
 import { TagState } from '@/utils/State'
 
@@ -84,77 +84,95 @@ const TagId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
     blogs, tags, categories
 }: Props) => {
 
-    //タグ情報を受け取る
-    const getTag = useRecoilValue(TagState)
+  //Recoil
+  const [tag, setTag] = useRecoilState(TagState)
+  let tagData: Tag = {
+    id: '',
+    tag: '',
+    createdAt: '',
+    updatedAt: '',
+    publishedAt: '',
+    revisedAt: ''
+  }
 
-    //記事が持っているタグと一致しているものを抽出
-    const prevBlogs = [...blogs]
-    const filterBlogs = prevBlogs.filter(blog => blog.tags.map(tag => tag.tag).includes(getTag.tag))
-    const filterBlogsCount = filterBlogs.length
+  if (typeof localStorage !== 'undefined') {
+    const jsonGetTag = localStorage.getItem('tag') || ''
+    const getTag: Tag = JSON.parse(jsonGetTag)
+    tagData = getTag
+  }
 
-    return (
-        <>
-        <Header categories={categories} />
-        <Box className={styles.tag_container} component={'main'}>
-            <Box className={styles.tag_main}>
-                <Box className={styles.tag_title}>
-                    {`# ${getTag.tag}`}
-                </Box>
-                <List className={styles.blog_cardlist}>
-                  {
-                    filterBlogs.map((blog: Blog, index: number) => (
-                      <ListItem key={index} className={styles.blog_cardlistItem}>
-                        <Link href={`../blog/${blog.id}`} className={styles.blog_link}>
-                          <Card className={styles.blog_card}>
-                            {
-                              blog.images ? (
-                                <CardMedia 
-                                component={'img'}
-                                width='100%'
-                                height='auto'
-                                src={`../image/${blog.images}`}
-                                alt={blog.images}
-                                sx={{ 
-                                  border: 'solid 0.5px #ccc',
-                                  borderRadius: '2px'
-                                }}
-                                />
-                              ) : (<></>)
-                            }
-                            <Box className={styles.cardlistItem_right}>
-                              <Typography variant='h6' className={styles.card_title}>
-                                {blog.title}
-                              </Typography>
-                              <List className={styles.tag_wrapper}>
-                                <SellIcon className={styles.tag_icon} />
-                                {
-                                  blog.tags.map((tag: Tag, index: number) => (
-                                    <ListItem key={index} className={styles.tag_item}>{`#${tag.tag}`}</ListItem>
-                                  ))
-                                }
-                              </List>
-                              <Typography className={styles.posttime}>
-                                <AccessTimeIcon className={styles.posttime_icon} />
-                                { getDateStr(blog.publishedAt) }
-                              </Typography>
-                            </Box>
-                          </Card>
-                        </Link>
-                      </ListItem>
-                    ))
-                  }
-                </List>
-              <Pagination totalCount={filterBlogsCount} />
-            </Box>
-            <Box className={styles.sidebar}>
-                <Profile />
-                <Categories categories={categories} />
-                <Tags tags={tags} />
-            </Box>
-        </Box>
-        <Footer />
-        </>
-    )
+  //記事が持っているタグと一致しているものを抽出
+  const prevBlogs = [...blogs]
+  const filterBlogs = prevBlogs.filter(blog => blog.tags.map(tag => tag.tag).includes(tag.tag))
+  const filterBlogsCount = filterBlogs.length
+
+  useEffect(() => {
+    setTag(tagData)
+  }, [])
+
+  return (
+      <>
+      <Header categories={categories} />
+      <Box className={styles.tag_container} component={'main'}>
+          <Box className={styles.tag_main}>
+              <Box className={styles.tag_title}>
+                  {`# ${tag.tag}`}
+              </Box>
+              <List className={styles.blog_cardlist}>
+                {
+                  filterBlogs.map((blog: Blog, index: number) => (
+                    <ListItem key={index} className={styles.blog_cardlistItem}>
+                      <Link href={`../blog/${blog.id}`} className={styles.blog_link}>
+                        <Card className={styles.blog_card}>
+                          {
+                            blog.images ? (
+                              <CardMedia 
+                              component={'img'}
+                              width='100%'
+                              height='auto'
+                              src={`../image/${blog.images}`}
+                              alt={blog.images}
+                              sx={{ 
+                                border: 'solid 0.5px #ccc',
+                                borderRadius: '2px'
+                              }}
+                              />
+                            ) : (<></>)
+                          }
+                          <Box className={styles.cardlistItem_right}>
+                            <Typography variant='h6' className={styles.card_title}>
+                              {blog.title}
+                            </Typography>
+                            <List className={styles.tag_wrapper}>
+                              <SellIcon className={styles.tag_icon} />
+                              {
+                                blog.tags.map((tag: Tag, index: number) => (
+                                  <ListItem key={index} className={styles.tag_item}>{`#${tag.tag}`}</ListItem>
+                                ))
+                              }
+                            </List>
+                            <Typography className={styles.posttime}>
+                              <AccessTimeIcon className={styles.posttime_icon} />
+                              { getDateStr(blog.publishedAt) }
+                            </Typography>
+                          </Box>
+                        </Card>
+                      </Link>
+                    </ListItem>
+                  ))
+                }
+              </List>
+            <Pagination totalCount={filterBlogsCount} />
+          </Box>
+          <Box className={styles.sidebar}>
+              <Profile />
+              <Categories categories={categories} />
+              <Tags tags={tags} />
+          </Box>
+      </Box>
+      <Footer />
+      </>
+  )
 }
 
 export default TagId;

@@ -23,7 +23,12 @@ import styles from './tags.module.scss'
 
 export const Tags = ({ tags }: { tags: Tag[] }) => {
     const setTag = useSetRecoilState(TagState)
-    const onClickTag = (tag: Tag) => setTag(tag)
+    const onClickTag = (tag: Tag) => {
+        setTag(tag)
+    
+        const jsonTag = JSON.stringify(tag)
+        localStorage.setItem('tag', jsonTag)
+    }
 
   return (
     <Box className={styles.tags_container}>
