@@ -13,7 +13,13 @@ import { useSetRecoilState } from 'recoil'
 export const Header = ({ categories }: { categories: Category[] }) => {
   const setCategory = useSetRecoilState(CategoryState)
 
-  const onClickCategory = (category: Category) => setCategory(category)
+  const onClickCategory = (category: Category) => {
+    setCategory(category)
+
+    const jsonCategory = JSON.stringify(category)
+    localStorage.setItem('category', jsonCategory)
+
+  }
 
   return (
     <>
