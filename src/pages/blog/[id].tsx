@@ -90,7 +90,7 @@ type Props = {
 }
 
 const BlogId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
-    blog, categories, tags, highlightedBody 
+    blog, categories, tags, highlightedBody
 }: Props) => {
     const setCategory = useSetRecoilState(CategoryState)
     const onClickCategory = (category: Category) => setCategory(category)
@@ -128,7 +128,7 @@ const BlogId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                     </Box>
                 </Box>
                 <Image 
-                src={`/image/${blog.images}`}
+                src={blog.images}
                 alt={`${blog.title}`}
                 width={400}
                 height={260}

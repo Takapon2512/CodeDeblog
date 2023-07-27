@@ -105,6 +105,7 @@ const CategoryId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 
   useEffect(() => {
     setCategory(categoryData)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -127,7 +128,7 @@ const CategoryId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                           component={'img'}
                           width='100%'
                           height='auto'
-                          src={`/image/${blog.images}`}
+                          src={blog.images}
                           alt={blog.images}
                           sx={{ 
                             border: 'solid 0.5px #ccc',

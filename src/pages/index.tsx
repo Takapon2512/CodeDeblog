@@ -83,7 +83,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                       component='img'
                       width='100%'
                       height='186px'
-                      src={`/image/${blog.images}`}
+                      src={blog.images}
                       alt={blog.images}
                       sx={{ 
                         borderRadius: '2px'
